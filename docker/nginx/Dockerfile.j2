@@ -1,0 +1,10 @@
+FROM {{ image_spec("base-tools") }}
+MAINTAINER {{ maintainer }}
+
+RUN apt-get update \
+    && apt-get install -y nginx \
+    && useradd --user-group -G microservices nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+USER nginx
