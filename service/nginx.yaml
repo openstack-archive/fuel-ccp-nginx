@@ -1,0 +1,43 @@
+dsl_version: 0.4.0
+service:
+  name: nginx
+  ports:
+    - {{ nginx.port}}
+  containers:
+    - name: nginx
+      image: nginx
+      daemon:
+        files:
+          - ca_cert
+          - server-cert
+          - server-key
+          - servers
+          - upstreams
+        command: nginx
+
+files:
+  servers:
+    path: /etc/nginx/conf.d/servers.conf
+    content: servers.conf.j2
+    perm: "0400"
+    user: www-data
+  upstreams:
+    path: /etc/nginx/conf.d/upstreams.conf
+    content: upstreams.conf.j2
+    perm: "0400"
+    user: www-data
+  ca_cert:
+    path: /etc/nginx/ssl/certs/ca-cert.pem
+    content: ca-cert.pem.j2
+    perm: "0400"
+    user: www-data
+  server-cert:
+    path: /etc/nginx/ssl/certs/server-cert.pem
+    content: server-cert.pem.j2
+    perm: "0400"
+    user: www-data
+  server-key:
+    path: /etc/nginx/ssl/private/server-key.pem
+    content: server-key.pem.j2
+    perm: "0400"
+    user: www-data
