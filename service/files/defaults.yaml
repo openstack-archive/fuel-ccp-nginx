@@ -1,0 +1,4 @@
+configs:
+  nginx:
+    port:
+      cont: 80
