@@ -11,11 +11,13 @@ service:
           - ca_cert
           - server-cert
           - server-key
+          - headers-conf
+          - ssl-conf
         command: nginx
 
 files:
   ca_cert:
-    path: /opt/ccp/etc/tls/ca-cert.pem
+    path: /opt/ccp/etc/tls/ca.pem
     content: ca-cert.pem.j2
     perm: "0400"
     user: www-data
@@ -28,4 +30,14 @@ files:
     path: /opt/ccp/etc/tls/server-key.pem
     content: server-key.pem.j2
     perm: "0400"
+    user: www-data
+  headers-conf:
+    path: /etc/nginx/common/proxy-headers.conf
+    content: proxy-headers.conf
+    perm: "0600"
+    user: www-data
+  ssl-conf:
+    path: /etc/nginx/common/ssl.conf
+    content: ssl.conf.j2
+    perm: "0600"
     user: www-data
