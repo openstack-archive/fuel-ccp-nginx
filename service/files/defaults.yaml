@@ -5,4 +5,3 @@ configs:
       cont: 80
     service: null
     service_internal_port: 8080
-    ciphers: "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"

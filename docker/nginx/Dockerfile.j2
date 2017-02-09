@@ -6,3 +6,5 @@ RUN apt-get update \
     && usermod -a -G microservices www-data
 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx_proxy-headers.conf /etc/nginx/common/proxy-headers.conf
+COPY nginx_ssl.conf /etc/nginx/common/ssl.conf
