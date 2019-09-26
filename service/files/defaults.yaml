@@ -1,7 +1,0 @@
-configs:
-  nginx:
-    address: 0.0.0.0
-    port:
-      cont: 80
-    service: null
-    service_internal_port: 8080
